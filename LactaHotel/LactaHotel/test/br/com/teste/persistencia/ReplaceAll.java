@@ -9,7 +9,7 @@ package br.com.teste.persistencia;
  *
  * @author leandro
  */
-public class TesteReplaceAll {
+public class ReplaceAll {
     public static void main(String[] args) {
     
     String newr = " world ".replace(" ", "");

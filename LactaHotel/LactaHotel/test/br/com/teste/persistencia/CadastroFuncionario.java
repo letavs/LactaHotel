@@ -5,17 +5,18 @@
  */
 package br.com.teste.persistencia;
 
+import dominio.Funcionario;
+import persistencia.FuncionarioBD;
+
 /**
  *
  * @author leandro
  */
-public class TesteSalvarLider {
-    
+public class CadastroFuncionario {
     public static void main(String[] args) {
-    
         
+        Funcionario usuario = new Funcionario("Leandro Tavares", "123", "1", "letavs");
+        FuncionarioBD.inserir(usuario);
 
-       
     }
-    
 }

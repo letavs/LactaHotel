@@ -11,13 +11,32 @@ package dominio;
  */
 public class Funcionario {
     private String login, senha;
-    private int id;
+    private String id;
+    private String nickname;
 
-    public int getId() {
+    public Funcionario(String login, String senha, String id, String nickname) {
+        this.login = login;
+        this.senha = senha;
+        this.id = id;
+        this.nickname = nickname;
+    }
+    
+    public String getNickname(){
+        return nickname;
+    }
+    public void setNickname(String nickname){
+        
+    }
+
+    public Funcionario() {
+      
+    }
+
+    public String getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(String id) {
         this.id = id;
     }
 
@@ -36,5 +55,5 @@ public class Funcionario {
     public void setSenha(String senha) {
         this.senha = senha;
     }
-    
+
 }

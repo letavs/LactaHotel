@@ -1,10 +1,11 @@
-
-
 <%@page import="java.util.Date"%>
 <%@page import="java.text.SimpleDateFormat"%>
 <%@page import="persistencia.LiderBD"%>
 <%@page import="dominio.Lider"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%@include file="../validarFuncionario.jsp"%>
+<%@include file="../validaAlteracao.jsp" %>
+<% //@include file="../formatarData.jsp"%>
 <!DOCTYPE html>
 <html>
     <head>
@@ -15,16 +16,9 @@
     <head>
     <h1>Cadastro de Lideres</h1>
 </head>
-<form name="formCadastro" action="salvar.jsp" method="post">
-    <%
-        Lider lider = null;
-        if (request.getParameter("cpf") == null) {// Se houver um cpf faça
-            lider = new Lider(); //Senão, crie um novo Lider. 
 
-        } else {
-            lider = LiderBD.getId(request.getParameter("cpf"));// recebe o cpf e inicia uma alteração. 
-        }
-    %>
+<form name="formCadastro" action="salvar.jsp" method="post">
+
     <table style="with: 50%">
         <tr><td>Nome</td>
             <td><input type="text" name="nome" value="<%=lider.getNome()%>"/></td></tr>
@@ -45,7 +39,8 @@
             <td><input type="text" name="cidade" value="<%=lider.getCidade()%>"/></td>
         </tr><tr><td>Estado</td>
             <%
-                String estadoSelecionado = "SP";
+                // Buscar uma solução para colocar essa parte do codigo no arquivo formatar.jsp
+                String estadoSelecionado = "SP"; // 
                 if (lider.getEstado() != null) {
                     estadoSelecionado = lider.getEstado();
                 }
@@ -66,8 +61,7 @@
         </tr>
         <tr>
             <td><input type="submit" name="salvar" value="Salvar"/></td>
-        <input type="hidden" name="idAlterado" value="<%=request.getParameter("cpf")%>"/> 
-
+        <input type="hidden" name="id" value="<%=request.getParameter("cpf")%>"/> 
         </tr>
     </table>
 </form>

@@ -18,42 +18,42 @@ import static persistencia.ReservaBD.salvarXml;
  */
 public class ReservaBD {
     
-    public static ArrayList<Reserva> listaResevas = new ArrayList<>();
-    public static String destino = "/home/leandro/Documentos/listaReservas.xml";
+    private static ArrayList<Reserva> lista = new ArrayList<>();
+    private static String destino = "/home/leandro/Documentos/listaReservas.xml";
     
-    public void inserir(Reserva novaReserva){
+    public static void inserir(Reserva novaReserva){
         lerXml();
-        listaResevas.add(novaReserva);
+        lista.add(novaReserva);
         salvarXml();
     }
     
-    public void alterar(Reserva reservaAlterada){
+    public static void alterar(Reserva reservaAlterada){
         excluir(reservaAlterada.getNumReserva());
         inserir(reservaAlterada);
     }
     
-    public void excluir(int id){
+    public static void excluir(int id){
         lerXml();
-        for (int i = 0; i < listaResevas.size(); i++) {
-            Reserva cadaReserva = listaResevas.get(i);
+        for (int i = 0; i < lista.size(); i++) {
+            Reserva cadaReserva = lista.get(i);
             if(cadaReserva.getNumReserva() == id);
-            listaResevas.remove(i);
+            lista.remove(i);
         }
        salvarXml();
     }
-    public ArrayList<Reserva> listar(){
+    public static ArrayList<Reserva> listar(){
         lerXml();
-        return listaResevas;
+        return lista;
     }
     
     public static void lerXml(){
     File arquivo = new File(destino);
         if(arquivo.exists()){
             XStream stream = new XStream();
-            stream.alias("lista", Reserva.class);
-            listaResevas = (ArrayList<Reserva>) stream.fromXML(arquivo);
+            stream.alias("reserva", Reserva.class);
+            lista = (ArrayList<Reserva>) stream.fromXML(arquivo);
         }else{
-            listaResevas = new ArrayList<Reserva>();
+            lista = new ArrayList<Reserva>();
         }
         
     }
@@ -63,7 +63,7 @@ public class ReservaBD {
         stream.alias(destino, Reserva.class);
         try {
             FileWriter fileWriter = new FileWriter(destino);
-            fileWriter.write(stream.toXML(listaResevas));
+            fileWriter.write(stream.toXML(lista));
             fileWriter.close();
         } catch (Exception e) {
             System.out.println(e.getMessage());

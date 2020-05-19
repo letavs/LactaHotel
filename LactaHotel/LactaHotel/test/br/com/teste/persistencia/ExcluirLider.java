@@ -14,7 +14,7 @@ import persistencia.LiderBD;
  *
  * @author leandro
  */
-public class TesteExcluirLider {
+public class ExcluirLider {
 
     public static void main(String[] args) {
 

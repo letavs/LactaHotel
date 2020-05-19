@@ -12,14 +12,13 @@ import persistencia.ReservaBD;
  *
  * @author leandro
  */
-public class TestePersistenciaReserva {
+public class CadastrarReserva {
     public static void main(String[] args) {
         Reserva reserva1 = new Reserva();
         reserva1.setNumReserva(120);
         reserva1.setQuantDarias(6);
 
-       ReservaBD reservaBD = new ReservaBD();
-       reservaBD.inserir(reserva1);
+       ReservaBD.inserir(reserva1);
        
        System.out.println("Reserva inserida com sucesso!!!!!");
        System.out.println("Numero da reserva:"+reserva1.getNumReserva()+ "\n"+

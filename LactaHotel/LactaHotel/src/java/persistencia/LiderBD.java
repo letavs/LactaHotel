@@ -19,13 +19,13 @@ import java.util.ArrayList;
 public class LiderBD {
     private static ArrayList<Lider> lista = new ArrayList();
     private static String caminho = "/home/leandro/NetBeansProjects/lideres.xml";
+    
     public static void inserir(Lider novoLider){
         lerXml();
         lista.add(novoLider);   
         salvarXml();
     }
    
-    
     public static void alterar(Lider liderAlterado){
         excluir(liderAlterado.getCpf());
         inserir(liderAlterado);
